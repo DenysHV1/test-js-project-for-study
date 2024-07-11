@@ -181,7 +181,7 @@ flex-wrap: wrap;
 }
 
 .container-for-ball.baground-img{
-	background-image: url(/img/bg.png);
+	background-image: url(../img/bg.png);
 	background-position: 10% 10%;
 	background-repeat: repeat-x;
 	background-size: cover;
