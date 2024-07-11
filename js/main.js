@@ -164,19 +164,167 @@ headerAddressLinkA2.setAttribute('href', '#');
 // .style.backgroundColor = 'red'
 console.log(header) 
 
-
-
-
-
-
-
-
-
-
-
-
-const main = `<main></main>`;
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ➕🟢 🧱🧱🧱🧱🧱🧱🧱 Создание основной разметки и переменных к этой разметки - main > section > ul ul
+const main = 
+`<main>
+	<section class="first-section">
+		<div class="container first-section-inner">
+			<ul class="test-list">
+			</ul>
+			<ul class="test-list2">
+			</ul>
+		</div>
+	</section>
+</main>`;
 body.insertAdjacentHTML('beforeend', main);
+
+//first-section
+const firstSection = document.querySelector('main > section:first-child');
+firstSection.classList.add('first-section');
+
+//test-list
+const testListInFirstSection = document.querySelector('main > section:first-child > div:first-child > ul:first-child');
+testListInFirstSection.classList.add('test-list');
+
+const testListInFirstSection2 = document.querySelector('main > section:first-child > div:first-child > ul:nth-child(2)');
+testListInFirstSection2.classList.add('test-list2');
+
+
+// ➕🟢 1️⃣🧩🧩🧩🧩🧩🧩🧩🧩FIRST ARRAY add to marcup 
+const arrayFromBackend = [
+	{
+		carName: 'Bugatty',
+		type: '5ss',
+		price: 120000, 
+		img: 'https://klike.net/uploads/posts/2019-05/1559021804_2.jpg',
+	},
+	{
+		carName: 'Mersedes',
+		type: 'S5',
+		price: 60000, 
+		img: 'https://fullhdoboi.ru/wp-content/uploads/_ph/1/475901848.jpg',
+	},
+	{
+		carName: 'onlySix',
+		type: '6',
+		price: 30000, 
+		img: 'https://s1.1zoom.ru/big0/43/239685-Sepik.jpg',
+	},
+	{
+		carName: 'BMW',
+		type: 'S1',
+		price: 70000, 
+		img: 'https://i.artfile.ru/1920x1080_772171_[www.ArtFile.ru].jpg',
+	},
+	{
+		carName: 'Ferrary',
+		type: 'S7',
+		price: 90000, 
+		img: 'https://mebel-go.ru/mebelgoer/8762Auto___Lamborghini_Photo_of_a_car_Lamborghini_Aventador__063460_.jpg',
+	},
+]
+
+const itemLiMarkup = arrayFromBackend.map(({carName, type, price, img}) => 
+	`<li class = "all-li-with-content">
+		<img src="${img}" alt="${carName}">
+		<h2>${carName}</h2>
+		<h3>${type}</h3>
+		<p>${price}</p>
+	</li>`
+	).join('');
+	
+	testListInFirstSection.insertAdjacentHTML('afterbegin', itemLiMarkup);
+
+
+
+// ➕🟢 2️⃣🧩🧩🧩🧩🧩🧩🧩🧩SECOND ARRAY add to marcup 
+const cars2 = [
+    {
+        img: "https://consumerguide.com/wp-content/uploads/2020/11/6802-2020audia47.jpg",
+        carName: "Audi A4",
+        type: "2022",
+        id: "A4-2022",
+        price: "$45,000"
+    },
+    {
+        img: "https://images2.alphacoders.com/107/1072096.jpg",
+        carName: "BMW X5",
+        type: "2023",
+        id: "X5-2023",
+        price: "$60,000"
+    },
+    {
+        img: "https://car-images.bauersecure.com/pagefiles/25079/fordmustang2016-03.jpg",
+        carName: "Ford Mustang",
+        type: "2021",
+        id: "Mustang-2021",
+        price: "$35,000"
+    },
+]
+const itemLiMarkup2 = cars2.map(({carName, type, price, img}) => 
+	`<li class = "all-li-with-content">
+		<img src="${img}" alt="${carName}">
+		<h2>${carName}</h2>
+		<h3>${type}</h3>
+		<p>${price}</p>
+	</li>`
+	).join('');
+	
+	testListInFirstSection.insertAdjacentHTML('afterbegin', itemLiMarkup2);
+
+
+
+// ➕🟢 3️⃣🧩🧩🧩🧩🧩🧩🧩🧩THIRT ARRAY add to marcup 
+const japan = [
+    {
+        image_url: "https://s1.1zoom.ru/b5155/454/Japan_Kyoto_Gardens_Pond_Autumn_Pagodas_Bridges_536318_1920x1080.jpg",
+        description: "Закат над горами",
+        location: "Горы Рокки",
+		id: 'none',
+    },
+    {
+        image_url: "https://99px.ru/sstorage/53/2017/08/tmb_206894_3810.jpg",
+        description: "Цветущие сакуры",
+        location: "Япония",
+		id: 34734
+    },
+    {
+        image_url: "https://www.rabstol.net/uploads/gallery/main/253/rabstol_net_japan_11.jpg",
+        description: "Абстрактное искусство",
+        location: "Галерея современного искусства",
+		id: 2323323
+    }
+]
+const japanItem = japan.map(({image_url, description, location, id = 'none'}) => `<li data-id="${id}" class = "all-li-with-content">
+	<img src="${image_url}" alt="${description}">
+	<h2>${description}</h2>
+	<h3>${location}</h3>
+</li>`).join('');
+
+
+testListInFirstSection2.insertAdjacentHTML('afterbegin', japanItem)
+
+// ➖🟢 🧨🧨🧨🧨🧨🧨DELITED SPESIAL ITEM FROM MARCUP⚙️⚙️⚙️
+const testListInFirstSection2After = document.querySelector('main > section:first-child > div:first-child > ul:nth-child(2)');
+
+console.log([...testListInFirstSection2After.children].forEach((item) => {
+	if(item.dataset.id === 'none'){
+		item.remove()
+	}
+}))
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
