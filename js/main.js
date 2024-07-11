@@ -329,6 +329,8 @@ const buttonRandomColor = document.querySelector('.my-button-color');
 const buttonRandomColorBg = document.querySelector('.my-button-color-bg');
 const buttonStars = document.querySelector('.my-button-color-stars')
 
+
+
 const objectBall = document.querySelector('.balls');
 const spaceForPlay = document.querySelector('.play-game');
 
@@ -386,8 +388,8 @@ buttonRandomColorBg.addEventListener('click', () => {
 })
 
 
-
+const containerForBoll = document.querySelector('.container-for-ball')
 buttonStars.addEventListener('click', () => {
-	spaceForPlay.classList.toggle('baground-img');
-	spaceForPlay.style.backgroundImage = '';
+	containerForBoll.classList.toggle('baground-img');
+	// containerForBoll.style.backgroundImage = '';
 })

@@ -180,7 +180,7 @@ flex-wrap: wrap;
 	border-radius: 10px;
 }
 
-.play-game.baground-img{
+.container-for-ball.baground-img{
 	background-image: url(/img/bg.png);
 	background-position: 10% 10%;
 	background-repeat: repeat-x;
@@ -199,7 +199,7 @@ flex-wrap: wrap;
 		background-position: 10% 10%;
 		}
 		to {
-			background-position: 10000% 10%;
+		background-position: 10000% 10%;
 	}
 }
 
