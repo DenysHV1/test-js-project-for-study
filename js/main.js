@@ -318,7 +318,7 @@ body.insertAdjacentHTML('afterbegin', footer);
 
 ///////////////////////////////////////////////////////////////
 
-//text-content
+// 1 variant 
 
 const title = document.querySelector('.text-content');
 
@@ -346,25 +346,32 @@ function myClickOnTheText(event){
 
 
 
+// 3 variant 
 
+body.insertAdjacentHTML('beforeend', '<p class = "trainingP">I have this text for my training, because i need test this</p>');
 
+const specialTestP = document.querySelector('.trainingP');
 
+const numberWithoutDots = 11;
+const numbersWithDots = numberWithoutDots + 3;
 
+specialTestP.addEventListener('click', testClick);
 
+function testClick (event){
+	const insideTestP = event.currentTarget;
+	const firstHalfText = insideTestP.textContent.slice(0, numberWithoutDots);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+	if (insideTestP.textContent.length > numbersWithDots){
+		const secondHalfText = insideTestP.textContent.slice(numberWithoutDots);
+		insideTestP.setAttribute('data-text', secondHalfText);
+		insideTestP.textContent = firstHalfText + '...'
+	}else{
+		const takeSecondHalfText = insideTestP.dataset.text
+		if(takeSecondHalfText){
+			insideTestP.textContent = firstHalfText + takeSecondHalfText
+		}
+	}
+}
 
 
 
